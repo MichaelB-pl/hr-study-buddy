@@ -1,5 +1,5 @@
 import React from 'react';
-import UsersListItem from './UsersListItem';
+import UsersListItem from 'components/UsersListItem/UsersListItem';
 import { users } from 'data/users';
 
 const UsersList = () => (
