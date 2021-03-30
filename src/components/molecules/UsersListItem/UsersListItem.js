@@ -5,13 +5,16 @@ import Button from 'components/atoms/Button/Button';
 import Average from 'components/atoms/Average/Average';
 import UserInfo from 'components/atoms/UserInfo/UserInfo';
 
-const UsersListItem = ({ userData: { average, name, attendance = '0%' } }) => (
+const showIndex = (index) => alert(`This is student #${index + 1}`);
+
+const UsersListItem = ({ index, userData: { average, name, attendance = '0%' } }) => (
   <Wrapper>
     <Average>{average}</Average>
     <UserInfo name={name} attendance={attendance} />
-    <Button />
+    <Button onClick={() => showIndex(index)} />
   </Wrapper>
 );
+
 UsersListItem.propTypes = {
   userData: PropTypes.shape({
     average: PropTypes.string.isRequired,
