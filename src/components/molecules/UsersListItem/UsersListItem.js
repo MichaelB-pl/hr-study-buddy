@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper } from './UsersListItem.styles';
 import Button from 'components/atoms/Button/Button';
 import Average from 'components/atoms/Average/Average';
 import UserInfo from 'components/atoms/UserInfo/UserInfo';
 
-const showIndex = (index) => alert(`This is student #${index + 1}`);
+const UsersListItem = ({ deleteUser, index, userData: { average, name, attendance = '0%' } }) => {
+  useEffect(() => {
+    return () => {
+      console.log(`${name} has been deleted.`);
+    };
+  }, []);
 
-const UsersListItem = ({ index, userData: { average, name, attendance = '0%' } }) => (
-  <Wrapper>
-    <Average>{average}</Average>
-    <UserInfo name={name} attendance={attendance} />
-    <Button onClick={() => showIndex(index)} />
-  </Wrapper>
-);
+  return (
+    <Wrapper>
+      <Average>{average}</Average>
+      <UserInfo name={name} attendance={attendance} />
+      <Button onClick={() => deleteUser(name)} />
+    </Wrapper>
+  );
+};
 
 UsersListItem.propTypes = {
   userData: PropTypes.shape({
