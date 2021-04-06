@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { users as usersData } from 'data/users';
 import UsersList from 'components/organisms/UsersList/UsersList';
 import Form from 'components/organisms/Form/Form';
+import NavBar from 'components/molecules/NavBar/NavBar';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.styles';
@@ -67,10 +68,7 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Wrapper>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/add-user">Add user</Link>
-          </nav>
+          <NavBar />
           <Switch>
             <Route path="/add-user">
               <Form handleAddUser={handleAddUser} formValues={formValues} handleInputChange={handleInputChange} />
