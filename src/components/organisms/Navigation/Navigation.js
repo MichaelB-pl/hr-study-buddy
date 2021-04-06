@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, StyledTitle, StyledNav } from './NavBar.styles';
+import { Wrapper, Logo, StyledLink } from './Navigation.styles';
 
 const links = [
   {
@@ -20,15 +20,23 @@ const links = [
   },
 ];
 
-const NavBar = () => {
+const Navigation = () => {
   return (
     <Wrapper>
-      <StyledTitle>Study Buddy</StyledTitle>
+      <Logo>
+        <h1>
+          Studdy
+          <br />
+          Buddy
+        </h1>
+      </Logo>
       {links.map((link) => (
-        <StyledNav to={link.to}>{link.title}</StyledNav>
+        <StyledLink key={link.to} to={link.to}>
+          {link.title}
+        </StyledLink>
       ))}
     </Wrapper>
   );
 };
 
-export default NavBar;
+export default Navigation;

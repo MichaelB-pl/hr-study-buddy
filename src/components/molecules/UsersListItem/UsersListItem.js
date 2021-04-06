@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper } from './UsersListItem.styles';
+import { Wrapper, StyledAverage, StyledInfo } from './UsersListItem.styles';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
-import Average from 'components/atoms/Average/Average';
-import UserInfo from 'components/atoms/UserInfo/UserInfo';
 
 const UsersListItem = ({ deleteUser, index, userData: { average, name, attendance = '0%' } }) => {
   return (
     <Wrapper>
-      <Average>{average}</Average>
-      <UserInfo name={name} attendance={attendance} />
+      <StyledAverage average={average}>{average}</StyledAverage>
+      <StyledInfo>
+        <p>{name}</p>
+        <p>attendance: {attendance}</p>
+      </StyledInfo>
       <DeleteButton onClick={() => deleteUser(name)} />
     </Wrapper>
   );
