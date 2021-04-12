@@ -5,6 +5,7 @@ const links = [
   {
     title: 'Dashboard',
     to: '/',
+    exact: true,
   },
   {
     title: 'Add user',
@@ -31,7 +32,7 @@ const Navigation = () => {
         </h1>
       </Logo>
       {links.map((link) => (
-        <StyledLink key={link.to} to={link.to}>
+        <StyledLink key={link.to} to={link.to} exact={link.exact}>
           {link.title}
         </StyledLink>
       ))}
