@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper } from './UsersListItem.styles';
+import { Wrapper, StyledAverage, StyledInfo } from './UsersListItem.styles';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
-import Average from 'components/atoms/Average/Average';
-import UserInfo from 'components/atoms/UserInfo/UserInfo';
+import { UserShape } from 'types';
+import { UsersContext } from 'providers/UsersProvider';
 
-const UsersListItem = ({ deleteUser, index, userData: { average, name, attendance = '0%' } }) => {
+const UsersListItem = ({ userData: { average, name, attendance = '0%' } }) => {
+  const { deleteUser } = useContext(UsersContext);
+
   return (
     <Wrapper>
-      <Average>{average}</Average>
-      <UserInfo name={name} attendance={attendance} />
+      <StyledAverage average={average}>{average}</StyledAverage>
+      <StyledInfo>
+        <p>{name}</p>
+        <p>attendance: {attendance}</p>
+      </StyledInfo>
       <DeleteButton onClick={() => deleteUser(name)} />
     </Wrapper>
   );
 };
 
 UsersListItem.propTypes = {
-  userData: PropTypes.shape({
-    average: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    attendence: PropTypes.string,
-  }),
+  userData: PropTypes.shape(UserShape),
 };
 
 export default UsersListItem;
