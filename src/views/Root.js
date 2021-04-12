@@ -50,7 +50,7 @@ const Root = () => {
                   <AddUser />
                 </Route>
                 <Route path="/">
-                  <Dashboard deleteUser={deleteUser} users={users} />
+                  <Dashboard />
                 </Route>
               </Switch>
             </Wrapper>
