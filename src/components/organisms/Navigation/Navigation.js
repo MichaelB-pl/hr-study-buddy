@@ -4,7 +4,7 @@ import { Wrapper, Logo, StyledLink } from './Navigation.styles';
 const links = [
   {
     title: 'Dashboard',
-    to: '/',
+    to: '/group',
     exact: true,
   },
   {
